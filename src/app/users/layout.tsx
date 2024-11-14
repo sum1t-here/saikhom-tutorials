@@ -18,13 +18,10 @@ export default function AdminLayout({
       {/* for larger screens */}
       <div className="hidden lg:flex lg:flex-col">
         <Nav>
-          <Navlink href="/admin">Dashboard</Navlink>
-          <Navlink href="/admin/courses">Courses</Navlink>
-          <Navlink href="/admin/users">Users</Navlink>
-          <Navlink href="/admin/orders">Orders</Navlink>
-          <Navlink href="/admin/analytics">Analytics</Navlink>
-          <Navlink href="/admin/quizzes">Quizzes</Navlink>
-          <Navlink href="/admin/notifications">Notifications</Navlink>
+          <Navlink href="/users">Dashboard</Navlink>
+          <Navlink href="/users/courses">My Courses</Navlink>
+          <Navlink href="/users/announcements">Announcements</Navlink>
+          <Navlink href="/users/profile">My profile</Navlink>
         </Nav>
       </div>
       {/* for smaller and medium screens */}
@@ -34,25 +31,16 @@ export default function AdminLayout({
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>
-            <Navlink href="/admin">Dashboard</Navlink>
+            <Navlink href="/users">Dashboard</Navlink>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Navlink href="/admin/courses">Courses</Navlink>
+            <Navlink href="/users/courses">My Courses</Navlink>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Navlink href="/admin/users">Users</Navlink>
+            <Navlink href="/users/announcements">Announcements</Navlink>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Navlink href="/admin/orders">Orders</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/admin/analytics">Analytics</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/admin/quizzes">Quizzes</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/admin/notifications">Notifications</Navlink>
+            <Navlink href="/users/profile">My profile</Navlink>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
