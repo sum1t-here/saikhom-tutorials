@@ -5,9 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ComponentProps, ReactNode } from "react";
 
-export function Nav({ children }: { children: ReactNode }) {
+type NavProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export function Nav({ children, className }: NavProps) {
   return (
-    <nav className="bg-white text-black flex justify-center px-4">
+    <nav
+      className={cn("bg-white text-black flex justify-center px-4", className)}
+    >
       {children}
     </nav>
   );

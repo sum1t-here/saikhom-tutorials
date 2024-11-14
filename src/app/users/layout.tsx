@@ -25,25 +25,27 @@ export default function AdminLayout({
         </Nav>
       </div>
       {/* for smaller and medium screens */}
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <HiMenu className="ml-2 mt-3 w-8 h-12" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>
-            <Navlink href="/users">Dashboard</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/users/courses">My Courses</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/users/announcements">Announcements</Navlink>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Navlink href="/users/profile">My profile</Navlink>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div className="lg:hidden flex items-center">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <HiMenu className="ml-2 mt-3 w-8 h-12" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>
+              <Navlink href="/users">Dashboard</Navlink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Navlink href="/users/courses">My Courses</Navlink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Navlink href="/users/announcements">Announcements</Navlink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Navlink href="/users/profile">My profile</Navlink>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
       <div className="flex justify-center">
         <div className="container mt-8">{children}</div>
       </div>
