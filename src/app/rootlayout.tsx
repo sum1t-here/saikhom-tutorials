@@ -8,6 +8,7 @@ import {
 import { HiMenu } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import Link from "next/link";
 
 export default function Rootlayout({
   children,
@@ -26,15 +27,14 @@ export default function Rootlayout({
             <Navlink href="/all-courses">All Courses</Navlink>
           </div>
           <div className="flex gap-4">
-            <Button>Login</Button>
-            <Button>Register</Button>
+            <Button>Login / Register</Button>
           </div>
         </Nav>
       </div>
       {/* for smaller and medium screens */}
-      <div className="lg:hidden flex items-center">
+      <div className="lg:hidden flex justify-center items-center ">
         <DropdownMenu>
-          <div className="flex flex-row justify-center items-center gap-4">
+          <div className="flex flex-row gap-8">
             <div>
               <DropdownMenuTrigger>
                 <HiMenu className="ml-2 mt-3 w-8 h-12" />
@@ -43,8 +43,9 @@ export default function Rootlayout({
             <div className="flex flex-row justify-center items-center gap-4">
               <span>Saikhom Tutors</span>
               <div className="flex gap-4">
-                <Button>Login</Button>
-                <Button>Register</Button>
+                <Link href="/login-user">
+                  <Button>Login / Register</Button>
+                </Link>
               </div>
             </div>
           </div>
