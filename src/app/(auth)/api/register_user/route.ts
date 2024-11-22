@@ -13,6 +13,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const savedUser = await prisma.user.findUnique({ where: { email } });
+
+    if (savedUser) {
+      return NextResponse.json(
+        { message: "User email already registered" },
+        { status: 400 },
+      );
+    }
+
     // Hash the password asynchronously
     const hashedPassword = await bcrypt.hash(password, 10);
 
