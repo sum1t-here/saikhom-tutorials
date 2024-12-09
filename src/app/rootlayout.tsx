@@ -27,7 +27,9 @@ export default function Rootlayout({
             <Navlink href="/all-courses">All Courses</Navlink>
           </div>
           <div className="flex gap-4">
-            <Button>Login / Register</Button>
+            <Link href={"/login-user"}>
+              <Button>Login / Register</Button>
+            </Link>
           </div>
         </Nav>
       </div>
