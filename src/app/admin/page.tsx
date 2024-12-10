@@ -1,7 +1,9 @@
+import AdminTable from "./courses/_components/adminTable";
+
 export default function AdminDashBoard() {
   return (
-    <>
-      <h1>Welcome to the admin page</h1>
-    </>
+    <div>
+      <AdminTable />
+    </div>
   );
 }

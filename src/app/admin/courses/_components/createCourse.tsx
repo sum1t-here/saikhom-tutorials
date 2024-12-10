@@ -1,15 +1,22 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import useCourseStore from "@/store/useCourseStore";
+import { redirect } from "next/navigation";
+
 import React, { useState } from "react";
 
 const AddCourse = () => {
-  const { addNewCourse, fetchCourses, loading, error } = useCourseStore();
+  const { addNewCourse, loading, error } = useCourseStore();
   const [newCourse, setNewCourse] = useState({
     title: "",
     description: "",
     thumbnail: null as File | null, // Adjust type
-    price: 0,
+    price: "",
     category: "",
     subject: "",
   });
@@ -33,7 +40,7 @@ const AddCourse = () => {
       title: "",
       description: "",
       thumbnail: null, // Reset to null
-      price: 0,
+      price: "",
       category: "",
       subject: "",
     });
@@ -46,100 +53,107 @@ const AddCourse = () => {
       fileInput.value = ""; // Clear the file input value
     }
 
-    await fetchCourses();
+    redirect("/admin");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex">
-      <h1>Add New Course</h1>
-      <label>
-        Title:
-        <input
-          type="text"
-          placeholder="Enter course title"
-          value={newCourse.title}
-          onChange={(e) =>
-            setNewCourse({ ...newCourse, title: e.target.value })
-          }
-          required
-        />
-      </label>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center items-center"
+    >
+      <Card className="flex flex-col justify-center items-center">
+        <CardHeader>Add New Course</CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <Label>
+            Title:
+            <Input
+              type="text"
+              placeholder="Enter course title"
+              value={newCourse.title}
+              onChange={(e) =>
+                setNewCourse({ ...newCourse, title: e.target.value })
+              }
+              required
+            />
+          </Label>
 
-      <label>
-        Description:
-        <textarea
-          placeholder="Enter course description"
-          value={newCourse.description}
-          onChange={(e) =>
-            setNewCourse({ ...newCourse, description: e.target.value })
-          }
-          required
-          rows={4}
-        />
-      </label>
+          <Label>
+            Description:
+            <Textarea
+              placeholder="Enter course description"
+              value={newCourse.description}
+              onChange={(e) =>
+                setNewCourse({ ...newCourse, description: e.target.value })
+              }
+              required
+              rows={4}
+            />
+          </Label>
 
-      <label>
-        Thumbnail:
-        <input
-          type="file"
-          name="thumbnail"
-          accept="image/*"
-          onChange={(e) => {
-            if (e.target.files && e.target.files[0]) {
-              setNewCourse({ ...newCourse, thumbnail: e.target.files[0] }); // Assign File
-            }
-          }}
-          required
-        />
-      </label>
+          <Label>
+            Thumbnail:
+            <Input
+              type="file"
+              name="thumbnail"
+              accept="image/*"
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  setNewCourse({ ...newCourse, thumbnail: e.target.files[0] }); // Assign File
+                }
+              }}
+              required
+            />
+          </Label>
 
-      <label>
-        Price:
-        <input
-          type="number"
-          placeholder="Enter course price"
-          value={newCourse.price}
-          onChange={(e) =>
-            setNewCourse({
-              ...newCourse,
-              price: parseFloat(e.target.value) || 0,
-            })
-          }
-          required
-        />
-      </label>
+          <Label>
+            Price:
+            <Input
+              type="number"
+              placeholder="Enter course price"
+              value={newCourse.price}
+              onChange={(e) =>
+                setNewCourse({
+                  ...newCourse,
+                  price: e.target.value,
+                })
+              }
+              required
+            />
+          </Label>
 
-      <label>
-        Category:
-        <input
-          type="text"
-          placeholder="Enter category"
-          value={newCourse.category}
-          onChange={(e) =>
-            setNewCourse({ ...newCourse, category: e.target.value })
-          }
-          required
-        />
-      </label>
+          <Label>
+            Category:
+            <Input
+              type="text"
+              placeholder="Enter category"
+              value={newCourse.category}
+              onChange={(e) =>
+                setNewCourse({ ...newCourse, category: e.target.value })
+              }
+              required
+            />
+          </Label>
 
-      <label>
-        Subject:
-        <input
-          type="text"
-          placeholder="Enter subject"
-          value={newCourse.subject}
-          onChange={(e) =>
-            setNewCourse({ ...newCourse, subject: e.target.value })
-          }
-          required
-        />
-      </label>
+          <Label>
+            Subject:
+            <Input
+              type="text"
+              placeholder="Enter subject"
+              value={newCourse.subject}
+              onChange={(e) =>
+                setNewCourse({ ...newCourse, subject: e.target.value })
+              }
+              required
+            />
+          </Label>
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Adding..." : "Add Course"}
-      </button>
+          <Button type="submit" disabled={loading}>
+            {loading ? "Adding..." : "Add Course"}
+          </Button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </CardContent>
+      </Card>
     </form>
   );
 };

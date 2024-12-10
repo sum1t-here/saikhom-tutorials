@@ -24,7 +24,7 @@ type courseStore = {
 const useCourseStore = create<courseStore>((set) => ({
   courses: [],
   error: null,
-  loading: true,
+  loading: false,
 
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
@@ -54,7 +54,7 @@ const useCourseStore = create<courseStore>((set) => ({
   },
 
   addNewCourse: async (formData: FormData) => {
-    set({ loading: true });
+    set({ loading: true, error: null });
     try {
       const response = await axios.post("/admin/api/create-course", formData, {
         headers: {

@@ -34,9 +34,9 @@ export default function GetCourses() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row lg:flex-wrap gap-3">
+    <div className="flex flex-col justify-center lg:flex-row lg:flex-wrap gap-3">
       {courses.map((course) => (
-        <Card key={course.id} className="p-3">
+        <Card key={course.id} className="p-3 hover:shadow-2xl">
           <CardHeader>
             <CardTitle>{course.category}</CardTitle>
             <CardDescription>
