@@ -12,6 +12,7 @@ import {
 import useCourseStore from "@/store/useCourseStore";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function GetCourses() {
   const { courses, fetchCourses, deleteCourses, loading, error } =
@@ -34,7 +35,7 @@ export default function GetCourses() {
   };
 
   return (
-    <div className="flex flex-col justify-center lg:flex-row lg:flex-wrap gap-3">
+    <div className="flex flex-col justify-center lg:flex-row lg:flex-wrap gap-3 m-4">
       {courses.map((course) => (
         <Card key={course.id} className="p-3 hover:shadow-2xl">
           <CardHeader>
@@ -60,9 +61,11 @@ export default function GetCourses() {
             </div>
             <p>Price: ₹{course.price}</p>
             <div className="mt-3 flex justify-between items-center gap-5">
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-base">
-                Add Lectures
-              </Button>
+              <Link href={`/admin/courses/${course.id}/add-lecture`}>
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-base">
+                  Add Lectures
+                </Button>
+              </Link>
               <Button
                 onClick={() => handleDelete(course.id)}
                 className="w-full bg-destructive hover:bg-red-700"
