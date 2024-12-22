@@ -60,15 +60,18 @@ export default function GetCourses() {
               )}
             </div>
             <p>Price: ₹{course.price}</p>
-            <div className="mt-3 flex justify-between items-center gap-5">
-              <Link href={`/admin/courses/${course.id}/add-lecture`}>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-base">
-                  Add Lectures
+            <div className="mt-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+              <Link
+                href={`/admin/courses/${course.id}`}
+                className="w-full sm:w-auto"
+              >
+                <Button className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-base">
+                  View
                 </Button>
               </Link>
               <Button
                 onClick={() => handleDelete(course.id)}
-                className="w-full bg-destructive hover:bg-red-700"
+                className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-base"
               >
                 Delete
               </Button>

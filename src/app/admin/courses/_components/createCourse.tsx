@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 
 import React, { useState } from "react";
 
-const AddCourse = () => {
+export default function AddCourse() {
   const { addNewCourse, loading, error } = useCourseStore();
   const [newCourse, setNewCourse] = useState({
     title: "",
@@ -156,6 +156,4 @@ const AddCourse = () => {
       </Card>
     </form>
   );
-};
-
-export default AddCourse;
+}

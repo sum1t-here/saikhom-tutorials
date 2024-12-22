@@ -21,8 +21,6 @@ export default function AdminLayout({
           <Navlink href="/admin">Dashboard</Navlink>
           <Navlink href="/admin/courses">Courses</Navlink>
           <Navlink href="/admin/users">Users</Navlink>
-          <Navlink href="/admin/orders">Orders</Navlink>
-          <Navlink href="/admin/analytics">Analytics</Navlink>
           <Navlink href="/admin/quizzes">Quizzes</Navlink>
           <Navlink href="/admin/notifications">Notifications</Navlink>
         </Nav>
@@ -42,12 +40,6 @@ export default function AdminLayout({
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Navlink href="/admin/users">Users</Navlink>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Navlink href="/admin/orders">Orders</Navlink>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Navlink href="/admin/analytics">Analytics</Navlink>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Navlink href="/admin/quizzes">Quizzes</Navlink>
