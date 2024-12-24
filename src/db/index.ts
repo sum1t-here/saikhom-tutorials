@@ -14,7 +14,8 @@ declare global {
 
 // Here, we are checking if a global prisma instance already exists
 // If it doesn't exist, we create a new one using the prismaClientSingleton function
-const prisma = globalThis.prisma ?? prismaClientSingleton();
+const prisma: ReturnType<typeof prismaClientSingleton> =
+  globalThis.prisma ?? prismaClientSingleton();
 
 // Exporting the prisma instance to be used throughout the application
 export default prisma;
