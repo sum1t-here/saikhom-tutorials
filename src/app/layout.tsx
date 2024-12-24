@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ClientWrapper from "./clientwrapper";
+import Favicon from "../../public/favicon.png";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
   title: "Saikhom Tutors",
   description:
     "North-East India's most affordable coaching centre for JEE and NEET",
+  icons: [{ rel: "icon", url: Favicon.src }],
 };
 
 export default function RootLayout({
@@ -31,7 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );
