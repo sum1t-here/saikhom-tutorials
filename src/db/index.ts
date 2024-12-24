@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 // Importing the PrismaClient from the Prisma package to interact with the database
 import { PrismaClient } from "@prisma/client";
 
