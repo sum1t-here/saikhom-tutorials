@@ -13,13 +13,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { courseId: string } }
-) {
+export async function POST(req: NextRequest) {
   try {
-    const { courseId } = await params;
-
+    const courseId = req.nextUrl.pathname.split("/")[3];
+    // console.log(courseId);
     if (!courseId) {
       return NextResponse.json(
         { message: "Invalid course ID" },

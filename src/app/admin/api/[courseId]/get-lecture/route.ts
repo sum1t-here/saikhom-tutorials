@@ -1,12 +1,9 @@
 import prisma from "@/db";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { courseId: string } }
-) {
+export async function GET(req: NextRequest) {
   try {
-    const { courseId } = await params;
+    const courseId = req.nextUrl.pathname.split("/")[3];
 
     if (!courseId) {
       return NextResponse.json(

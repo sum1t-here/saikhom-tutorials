@@ -1,19 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/db";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params;
+export async function DELETE(req: NextRequest) {
+  const courseId = req.nextUrl.pathname.split("/")[4];
 
-  if (!id) {
+  if (!courseId) {
     return NextResponse.json({ message: "Invalid course ID" }, { status: 400 });
   }
 
   try {
     const course = await prisma.courses.delete({
-      where: { id: parseInt(id, 10) },
+      where: { id: parseInt(courseId, 10) },
     });
 
     return NextResponse.json(
