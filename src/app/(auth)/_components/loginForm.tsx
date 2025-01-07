@@ -21,6 +21,9 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -30,6 +33,10 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function LoginForm() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,8 +45,32 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await axios.post("/api/login-user", values);
+      if (response.status === 200) {
+        const role = response.data.role;
+        if (role === "ADMIN") {
+          router.push("/admin");
+        } else {
+          router.push("/users");
+        }
+      } else {
+        setError(response.data.error);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setError(
+          error.response?.data.error || "An error occurred during login"
+        );
+      } else {
+        setError("An unexpected error occurred");
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -100,7 +131,12 @@ export default function LoginForm() {
                 )}
               />
               <div className="mt-2 flex justify-center">
-                <Button type="submit">Login</Button>
+                <Button type="submit" disabled={loading}>
+                  {loading ? "Loading..." : "Login"}
+                </Button>
+              </div>
+              <div className="mt-2 flex justify-center">
+                {error && <div className="text-red-500">{error}</div>}
               </div>
             </form>
           </Form>

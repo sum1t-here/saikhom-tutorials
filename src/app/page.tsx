@@ -14,6 +14,7 @@ import FeeDetails from "@/components/FeeDetails";
 import FaqSection from "@/components/FaqSection";
 import landingpageimg from "../../public/landingimg.jpeg";
 import WhatsAppButton from "@/components/WhatsappButton";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -110,6 +111,7 @@ export default function Home() {
       <FacultySection />
       <FaqSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 }

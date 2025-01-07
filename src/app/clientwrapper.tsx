@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Footer from "@/components/Footer";
 
 export default function ClientWrapper({
   children,
@@ -67,7 +66,6 @@ export default function ClientWrapper({
 
       {/* Main Content */}
       <main>{children}</main>
-      <Footer />
     </>
   );
 }

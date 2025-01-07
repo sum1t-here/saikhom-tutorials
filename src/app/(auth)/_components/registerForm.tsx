@@ -21,6 +21,9 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
   username: z
@@ -38,6 +41,10 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function RegisterForm() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,8 +56,36 @@ export default function RegisterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setLoading(true);
+      setError(""); // Clear previous errors
+
+      const response = await axios.post("/api/register-user", values);
+
+      // Check for successful registration
+      if (response.status === 201) {
+        router.push("/login-user");
+      } else {
+        // Handle other status codes (e.g., 400, 500)
+        setError(
+          response.data.message || "An error occurred during registration."
+        );
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        // Handle Axios errors (e.g., 400, 500)
+        setError(
+          error.response?.data.message ||
+            "An error occurred during registration."
+        );
+      } else {
+        // Handle unexpected errors
+        setError("An unexpected error occurred.");
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -163,7 +198,12 @@ export default function RegisterForm() {
                 )}
               />
               <div className="mt-2 flex justify-center">
-                <Button type="submit">Register</Button>
+                <Button type="submit" disabled={loading}>
+                  {loading ? "Loading..." : "Register"}
+                </Button>
+              </div>
+              <div className="mt-2 flex justify-center">
+                {error && <div className="text-red-500">{error}</div>}
               </div>
             </form>
           </Form>
