@@ -33,7 +33,7 @@ export default function ClientWrapper({
             <div className="text-xl font-bold">Saikhom Tutors</div>
             <nav>
               <Nav className="flex gap-6">
-                <Navlink href="/all-courses">All Courses</Navlink>
+                <Navlink href="/users/courses">All Courses</Navlink>
               </Nav>
             </nav>
             <div>
@@ -51,7 +51,7 @@ export default function ClientWrapper({
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>
-                  <Navlink href="/all-courses">All Courses</Navlink>
+                  <Navlink href="/users/courses">All Courses</Navlink>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

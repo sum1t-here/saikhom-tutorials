@@ -35,43 +35,49 @@ export default function GetCourses() {
   };
 
   return (
-    <div className="flex flex-col justify-center lg:flex-row lg:flex-wrap gap-3 m-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
       {courses.map((course) => (
-        <Card key={course.id} className="p-3 hover:shadow-2xl">
-          <CardHeader>
-            <CardTitle>{course.category}</CardTitle>
-            <CardDescription>
-              <h3>{course.title}</h3>
-              <p>{course.description}</p>
+        <Card
+          key={course.id}
+          className="hover:shadow-lg transition-shadow duration-300"
+        >
+          <CardHeader className="p-4">
+            <CardTitle className="text-xl font-semibold text-gray-900">
+              {course.title}
+            </CardTitle>
+            <CardDescription className="text-sm text-gray-600">
+              {course.category}
             </CardDescription>
           </CardHeader>
-
-          <CardContent>
-            <div>
+          <CardContent className="p-4">
+            <div className="mb-4">
               {course.thumbnail ? (
                 <Image
                   src={course.thumbnail}
                   alt={`${course.title} thumbnail`}
-                  width={300}
-                  height={100}
+                  width={500}
+                  height={300}
+                  className="w-full h-48 object-cover rounded-lg"
                 />
               ) : (
-                <div>No Thumbnail Available</div> // You can render a custom message or leave it empty
+                <div className="w-full h-48 flex items-center justify-center bg-gray-100 rounded-lg text-gray-500">
+                  No Thumbnail Available
+                </div>
               )}
             </div>
-            <p>Price: ₹{course.price}</p>
-            <div className="mt-3 flex flex-col sm:flex-row justify-between items-center gap-3">
-              <Link
-                href={`/admin/courses/${course.id}`}
-                className="w-full sm:w-auto"
-              >
-                <Button className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-base">
+            <p className="text-gray-700 mb-4">{course.description}</p>
+            <p className="text-lg font-bold text-gray-900 mb-4">
+              Price: ₹{course.price}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Link href={`/admin/courses/${course.id}`} className="flex-1">
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
                   View
                 </Button>
               </Link>
               <Button
                 onClick={() => handleDelete(course.id)}
-                className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-base"
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white"
               >
                 Delete
               </Button>

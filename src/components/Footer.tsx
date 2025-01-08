@@ -152,7 +152,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-blue-800 text-sm">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2024 All right reserved</p>
+            <p>© {new Date().getFullYear()} All right reserved</p>
             <div className="flex gap-6">
               <Link href="#" className="hover:text-blue-200">
                 Privacy Policy

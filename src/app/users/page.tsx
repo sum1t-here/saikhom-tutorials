@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import prisma from "@/db";
+import MyCourseCard from "./courses/_components/MyCourseCard";
 export default async function UserDashboard() {
   const headersList = await headers();
   const userId = headersList.get("x-user-id");
@@ -33,6 +34,7 @@ export default async function UserDashboard() {
             <p className="text-lg text-gray-600">{user?.username}</p>
           </div>
         </header>
+        <MyCourseCard userId={parseInt(userId)} />
       </div>
     </div>
   );

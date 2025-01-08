@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-type StudyMaterial = {
+export type StudyMaterial = {
   id: number;
   title: string;
   type: "VIDEO";
