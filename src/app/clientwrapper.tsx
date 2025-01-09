@@ -44,22 +44,27 @@ export default function ClientWrapper({
           </div>
 
           {/* Navbar for smaller screens */}
-          <div className="lg:hidden flex items-center justify-between h-16 px-4 bg-white shadow-md">
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <HiMenu className="w-8 h-8" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Navlink href="/users/courses">All Courses</Navlink>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <span className="text-xl font-bold">Saikhom Tutors</span>
-            <Link href="/login-user">
-              <Button size="sm">Login</Button>
-            </Link>
+          <div className="lg:hidden flex items-center justify-between h-16 px-4 bg-white shadow-md w-full">
+            <div className="flex items-center justify-between">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <HiMenu className="w-8 h-8" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Navlink href="/users/courses">All Courses</Navlink>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            <div>
+              <span className="text-xl font-bold">Saikhom Tutors</span>
+            </div>
+            <div>
+              <Link href="/login-user">
+                <Button size="sm">Login</Button>
+              </Link>
+            </div>
           </div>
         </header>
       )}

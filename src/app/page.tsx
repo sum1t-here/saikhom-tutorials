@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import FeatureCard from "@/components/FeatureCard";
@@ -15,8 +17,10 @@ import FaqSection from "@/components/FaqSection";
 import landingpageimg from "../../public/landingimg.jpeg";
 import WhatsAppButton from "@/components/WhatsappButton";
 import Footer from "@/components/Footer";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="flex-grow">
       <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-5">
@@ -37,7 +41,9 @@ export default function Home() {
               Unlock your potential by signing up with Saikhom Tutorials - The
               most affordable learning solution
             </p>
-            <Button size="lg">Get Started</Button>
+            <Button size="lg" onClick={() => router.push("/login-user")}>
+              Get Started
+            </Button>
           </div>
 
           <div className="w-full lg:w-1/2 relative">
@@ -86,7 +92,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
             Academic Excellence : Results
           </h2>
-          <div className="flex gap-6 mt-3">
+          <div className="flex gap-6 mt-3 sm:flex-row flex-col">
             <Image
               src={result1}
               alt="Result"
