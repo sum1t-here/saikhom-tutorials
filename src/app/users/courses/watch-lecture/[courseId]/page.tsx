@@ -67,13 +67,13 @@ const CourseDetailsPage = () => {
           <div className="lg:col-span-2">
             <Card className="mb-8">
               <CardContent className="p-0">
-                <div className="aspect-w-16 aspect-h-9 bg-gray-800">
+                <div className="aspect-w-16 aspect-h-9 bg-gray-800 min-h-[500px]">
                   {activeLesson && activeLesson.type === "VIDEO" ? (
                     <ReactPlayer
                       url={activeLesson.url}
                       controls
                       width="100%"
-                      height="100%"
+                      height="500px"
                       config={{
                         file: { attributes: { controlsList: "nodownload" } },
                       }}
