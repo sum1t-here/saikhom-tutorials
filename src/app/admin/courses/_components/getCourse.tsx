@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Loader from "../loader";
 import {
   Card,
   CardContent,
@@ -13,6 +12,7 @@ import useCourseStore from "@/store/useCourseStore";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { Loader } from "lucide-react";
 
 export default function GetCourses() {
   const { courses, fetchCourses, deleteCourses, loading, error } =
@@ -23,7 +23,7 @@ export default function GetCourses() {
   }, [fetchCourses]);
 
   if (loading) {
-    return <Loader />;
+    return <div className="flex justify-center items-center h-screen"><Loader className="animate-spin" /></div>;
   }
 
   if (error) {

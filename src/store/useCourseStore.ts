@@ -1,6 +1,13 @@
 import { create } from "zustand";
 import axios from "axios";
 
+interface Order {
+  user: {
+    id: string;
+    username: string;
+  }
+}
+
 type Course = {
   id: string;
   category: string;
@@ -8,6 +15,8 @@ type Course = {
   thumbnail: string;
   description: string;
   price: number;
+  orders: Order[];
+  users: { username: string }[];
 };
 
 type courseStore = {
@@ -42,6 +51,8 @@ const useCourseStore = create<courseStore>((set) => ({
         thumbnail: course.thumbnail, // Ensure this field is being handled
         description: course.description,
         price: course.price,
+        orders: course.orders,
+        users: course.orders.map((order: Order) => order.user),
       }));
 
       set({ courses, error: null });

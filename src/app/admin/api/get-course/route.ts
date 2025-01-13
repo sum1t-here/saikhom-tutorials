@@ -4,7 +4,15 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const courses = await prisma.courses.findMany({
-      include: { StudyMaterial: true },
+      include: { StudyMaterial: true, orders: {
+        where: {
+          orderStatus: "PAID"
+        },
+        include: {
+          user: true
+        }
+      }},
+
       orderBy: {
         id: "asc",
       },

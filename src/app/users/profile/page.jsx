@@ -42,7 +42,7 @@ async function Profile() {
                 <h2 className="text-sm font-semibold text-gray-500 uppercase">
                   Name
                 </h2>
-                <p className="text-lg font-medium text-gray-900">{user.name}</p>
+                <p className="text-lg font-medium text-gray-900">{user.fullname}</p>
               </div>
 
               {/* Email */}

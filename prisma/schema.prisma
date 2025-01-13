@@ -65,6 +65,13 @@ model StudyMaterial {
   @@index([courseId])
 }
 
+model Notifications {
+  id        Int          @id @default(autoincrement())
+  message   String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
 enum Role {
   ADMIN
   STUDENT
