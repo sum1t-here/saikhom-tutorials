@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
     await prisma.order.update({
       where: { id: order.id },
-      data: { orderStatus: OrderStatus.PAID },
+      data: { orderStatus: OrderStatus.PAID, isFree: false },
     });
     return NextResponse.json(
       { message: "payment verified successfully", isOk: true },

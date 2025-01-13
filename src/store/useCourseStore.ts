@@ -51,8 +51,8 @@ const useCourseStore = create<courseStore>((set) => ({
         thumbnail: course.thumbnail, // Ensure this field is being handled
         description: course.description,
         price: course.price,
-        orders: course.orders,
-        users: course.orders.map((order: Order) => order.user),
+        orders: course.orders || [],
+        users: course.orders.map((order: Order) => order.user) || [],
       }));
 
       set({ courses, error: null });
