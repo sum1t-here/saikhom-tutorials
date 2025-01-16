@@ -23,7 +23,7 @@ export default function AdminTable() {
     setLoading(false);
   }, [fetchCourses]);
 
-  console.log(courses);
+  // console.log(courses);
 
   return (
     <div className="m-3 ">
