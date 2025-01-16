@@ -73,6 +73,13 @@ model Notifications {
   updatedAt DateTime     @updatedAt
 }
 
+model PDF {
+  id           Int            @id @default(autoincrement())
+  title        String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
 enum Role {
   ADMIN
   STUDENT
