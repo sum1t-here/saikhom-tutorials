@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/db";
 
 export async function DELETE(req: NextRequest) {
+  // "/admin/api/delete-course/id"
   const courseId = req.nextUrl.pathname.split("/")[4];
 
   if (!courseId) {

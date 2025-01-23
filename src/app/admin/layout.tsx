@@ -35,6 +35,7 @@ export default function AdminLayout({
           <Navlink href="/admin/users">Users</Navlink>
           <Navlink href="/admin/quizzes">Quizzes</Navlink>
           <Navlink href="/admin/notifications">Notifications</Navlink>
+          <Navlink href="/admin/pdf">PDF</Navlink>
         </Nav>
         <div>
           <Button onClick={handleLogout} variant="destructive" className="mx-3">
@@ -64,6 +65,9 @@ export default function AdminLayout({
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Navlink href="/admin/notifications">Notifications</Navlink>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Navlink href="/admin/pdf">PDF</Navlink>              
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Button onClick={handleLogout} variant="destructive">

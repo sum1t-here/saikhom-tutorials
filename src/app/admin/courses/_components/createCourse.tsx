@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import useCourseStore from "@/store/useCourseStore";
 import { redirect } from "next/navigation";
 
@@ -20,6 +21,7 @@ export default function AddCourse() {
     category: "",
     subject: "",
   });
+  const {toast} = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +37,9 @@ export default function AddCourse() {
     formData.append("subject", newCourse.subject);
 
     await addNewCourse(formData); // Pass FormData
-    alert("Course added successfully!");
+    toast({
+      title: "Course added Successfully"
+    })
     setNewCourse({
       title: "",
       description: "",

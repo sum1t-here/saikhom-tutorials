@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import prisma from "@/db";
-import MyCourseCard from "./courses/_components/MyCourseCard";
+import MyCourseCard from "./_components/MyCourseCard";
+import PDFCard from "./_components/PDFCard";
 export default async function UserDashboard() {
   const headersList = await headers();
   const userId = headersList.get("x-user-id");
@@ -23,6 +24,14 @@ export default async function UserDashboard() {
   const user = await prisma.user.findUnique({
     where: { id: parseInt(userId) },
   });
+
+  const orderStatus = await prisma.order.findFirst({
+    where: {
+      userId: parseInt(userId),
+      isFree: false
+    },
+  });
+
   return (
     <div>
       <div className="max-w-6xl mx-auto">
@@ -35,6 +44,11 @@ export default async function UserDashboard() {
           </div>
         </header>
         <MyCourseCard userId={parseInt(userId)} />
+        {
+          orderStatus?.isFree === false && (
+            <PDFCard />
+          )
+        }
       </div>
     </div>
   );

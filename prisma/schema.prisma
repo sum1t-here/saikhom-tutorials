@@ -76,6 +76,8 @@ model Notifications {
 model PDF {
   id           Int            @id @default(autoincrement())
   title        String
+  description  String
+  pdfFile      String
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 }

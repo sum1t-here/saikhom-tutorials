@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from "./_components/CourseCard";
+import CourseCard from "../_components/CourseCard";
 import { headers } from "next/headers";
 
 async function Course() {
