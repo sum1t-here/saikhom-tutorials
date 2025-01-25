@@ -3,37 +3,17 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import axios from 'axios';
-import { toast } from '@/hooks/use-toast';
+import useNotificationStore from '@/store/useNotificationStore';
 
 function NotificationForm() {
     const [message, setMessage] = useState("");
-    const [loading, setLoading] = useState(false);
+    const {addNotification,loading} = useNotificationStore();
+   
 
     const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true);
-        await axios.post("/admin/api/notifications", {
-            message: message
-        }).then((res) => {
-            if (res.status === 200) {
-                toast({
-                    title: "Notification sent",
-                    description: "Notification sent successfully",
-                    variant: "default",
-                });
-            } else {
-                toast({
-                    title: "Notification not sent",
-                    description: "Notification not sent",
-                    variant: "destructive",
-                });
-            }
-        }).catch((err) => {
-            console.log(err);
-        }); 
+        await addNotification(message);
         setMessage("");
-        setLoading(false);
     }
 
   return (
