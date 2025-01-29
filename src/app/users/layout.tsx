@@ -35,6 +35,7 @@ export default function AdminLayout({
         <Nav>
           <Navlink href="/users">Dashboard</Navlink>
           <Navlink href="/users/courses">All Courses</Navlink>
+          <Navlink href="/users/solve">Solve Doubts</Navlink>
           <Navlink href="/users/announcements">Announcements</Navlink>
           <Navlink href="/users/profile">My profile</Navlink>
         </Nav>
