@@ -24,6 +24,7 @@ model User {
   orders          Order[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  UserQuizResult UserQuizResult[]
 }
 
 model Courses {
@@ -82,6 +83,39 @@ model PDF {
   updatedAt    DateTime       @updatedAt
 }
 
+model Quiz {
+  id        Int          @id @default(autoincrement())
+  title     String
+  status    QuizStatus   @default(ACTIVE)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  questions Question[]
+  UserQuizResult UserQuizResult[]
+}
+
+model Question {
+  id        Int          @id @default(autoincrement())
+  quizId    Int
+  quiz      Quiz         @relation(fields: [quizId], references: [id])
+  text      String
+  options   String[]
+  answer    String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model UserQuizResult {
+  id        Int          @id @default(autoincrement())
+  userId    Int
+  user      User         @relation(fields: [userId], references: [id])
+  quizId    Int
+  quiz      Quiz         @relation(fields: [quizId], references: [id])
+  status    QuizStatus   @default(PARTICIPATED)
+  score     Int
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
 enum Role {
   ADMIN
   STUDENT
@@ -96,4 +130,9 @@ enum OrderStatus {
   PENDING
   PAID
   FAILED
+}
+
+enum QuizStatus {
+  ACTIVE
+  PARTICIPATED
 }
