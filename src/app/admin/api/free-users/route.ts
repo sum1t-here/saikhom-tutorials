@@ -12,11 +12,11 @@ export async function GET() {
                         none: {}, // No orders exist
                     },
                 },
-                // Users with at least one order where isFree is true
+                // Users whose none other isFree: false
                 {
                     orders: {
-                        some: {
-                            isFree: true,
+                        none: {
+                            isFree: false,
                         },
                     },
                 },

@@ -16,8 +16,8 @@ export async function GET() {
                 OR: [
                     // Users with no orders
                     { orders: { none: {} } },
-                    // Users with at least one order where isFree is true
-                    { orders: { some: { isFree: true } } },
+                    // Users with at no order where isFree is false
+                    { orders: { none : { isFree: false } } },
                 ],
             },
             _count: {

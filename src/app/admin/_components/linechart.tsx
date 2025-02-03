@@ -74,8 +74,8 @@ export default function LineChart() {
     labels,
     datasets: [
       {
-          label: 'Paid Users',
-          data: paidUserPerM,
+        label: 'Paid Users',
+        data: paidUserPerM,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {

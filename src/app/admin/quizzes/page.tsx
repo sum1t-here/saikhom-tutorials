@@ -1,9 +1,12 @@
 import React from 'react'
+import QuizForm from '../_components/QuizForm'
+import QuizFetch from '../_components/QuizFetch'
 
 function page() {
   return (
     <div>
-      <h1>Coming soon ...</h1>
+      <QuizForm/>
+      <QuizFetch/>
     </div>
   )
 }
