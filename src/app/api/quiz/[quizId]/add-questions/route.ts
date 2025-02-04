@@ -4,16 +4,16 @@ import prisma from "@/db";
 export async function POST(req: NextRequest) {
     try {
         const quizId = req.nextUrl.pathname.split("/")[3];
-        const {question, options, answer} = await req.json();
+        const {text, options, answer} = await req.json();
 
-        if(!question || !options || !answer){
+        if(!text || !options || !answer){
             return NextResponse.json({message: "Please fill all the fields"}, {status: 400});
         }
 
         await prisma.question.create({
             data:{
                 quizId: parseInt(quizId),
-                text: question,
+                text,
                 options,
                 answer,
             }
