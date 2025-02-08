@@ -2,6 +2,8 @@ import { headers } from "next/headers";
 import prisma from "@/db";
 import MyCourseCard from "./_components/MyCourseCard";
 import PDFCard from "./_components/PDFCard";
+import QuizResult from "./_components/QuizResult";
+
 export default async function UserDashboard() {
   const headersList = await headers();
   const userId = headersList.get("x-user-id");
@@ -47,6 +49,11 @@ export default async function UserDashboard() {
         {
           orderStatus?.isFree === false && (
             <PDFCard />
+          )
+        }
+        {
+          orderStatus?.isFree === false && (
+            <QuizResult userId={parseInt(userId)}/>
           )
         }
       </div>

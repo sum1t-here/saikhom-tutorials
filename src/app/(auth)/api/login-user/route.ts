@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       { userId: user.id, role: user.role },
       process.env.JWT_SECRET!,
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       }
     );
 
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 60 * 60,
+      maxAge: 24 * 60 * 60,
     });
 
     return NextResponse.json(

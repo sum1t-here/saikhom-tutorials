@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { chatSession } from "../../../../utils/GeminiModal";
+import ReactMarkdown from "react-markdown";
 
 function Doubt() {
   const [doubt, setDoubt] = useState("");
@@ -27,8 +28,6 @@ function Doubt() {
       console.error("Error fetching response:", error);
       setResponse("Failed to fetch response. Try again.");
     }
-
-    console.log(response);
 
     setLoading(false);
   };
@@ -56,7 +55,7 @@ function Doubt() {
       {response && (
         <div className="mt-4 p-3 bg-gray-100 rounded-md">
           <h3 className="font-medium">AI Response:</h3>
-          <p className="text-sm text-gray-700">{response}</p>
+          <ReactMarkdown className="text-sm text-gray-700">{response}</ReactMarkdown>
         </div>
       )}
     </div>
