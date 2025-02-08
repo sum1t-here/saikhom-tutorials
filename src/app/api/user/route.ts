@@ -22,7 +22,7 @@ export async function GET(req: NextRequest){
                 throw new Error("Invalid token structure");
             }
 
-            const { userId, role } = payload as unknown as DecodedToken;
+            const { userId } = payload as unknown as DecodedToken;
 
             return NextResponse.json({userId},{status: 200});
 

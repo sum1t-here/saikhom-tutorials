@@ -9,7 +9,7 @@ function QuestionsFetch({ quizId }: { quizId: string }) {
     const { questions, fetchQuestions, deleteQuestion, loading, error} = useQuizQuestionStore();
     useEffect(() => {
         fetchQuestions(Number(quizId));
-    }, [quizId]);   
+    }, [quizId, fetchQuestions]);   
     console.log(questions);
 
     const handleDeleteQuestion = (id: number) => {

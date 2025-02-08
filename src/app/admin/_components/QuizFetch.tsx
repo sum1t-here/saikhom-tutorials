@@ -13,7 +13,7 @@ function QuizFetch() {
       await fetchQuizzes();
     }
     fetchData();
-  }, []);
+  }, [fetchQuizzes]);
 
   if (loading) return <div className="flex justify-center items-center"><Loader className="animate-spin" /></div>;
   if (error) return <div className="text-red-500 text-center p-4">Error: {error}</div>;

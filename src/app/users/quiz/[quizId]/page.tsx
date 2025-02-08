@@ -65,7 +65,7 @@ function QuizPage() {
 
             console.log("Sending Data", payload);
 
-            const response = await axios.post("/api/quiz/submitQuiz", payload, {
+            await axios.post("/api/quiz/submitQuiz", payload, {
                 headers: {
                     "Content-Type": "application/json",
                 },
