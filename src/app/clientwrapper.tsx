@@ -45,7 +45,7 @@ export default function ClientWrapper({
 
           {/* Navbar for smaller screens */}
           <div className="lg:hidden flex items-center justify-between h-16 px-4 bg-white shadow-md w-full">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center">
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <HiMenu className="w-8 h-8" />
@@ -57,10 +57,10 @@ export default function ClientWrapper({
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
-            <div>
+            <div className="flex-1 flex justify-center">
               <span className="text-xl font-bold">Saikhom Tutors</span>
             </div>
-            <div>
+            <div className="flex items-center">
               <Link href="/login-user">
                 <Button size="sm">Login</Button>
               </Link>

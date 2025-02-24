@@ -92,7 +92,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
             Academic Excellence : Results
           </h2>
-          <div className="flex gap-6 mt-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
             <Image
               src={result1}
               alt="Result"

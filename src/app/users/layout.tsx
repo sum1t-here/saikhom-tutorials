@@ -61,6 +61,9 @@ export default function AdminLayout({
                 <Navlink href="/users/courses">All Courses</Navlink>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Navlink href="/users/solve">Solve Doubts</Navlink>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
                 <Navlink href="/users/announcements">Announcements</Navlink>
               </DropdownMenuItem>
               <DropdownMenuItem>
