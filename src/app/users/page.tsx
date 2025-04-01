@@ -48,12 +48,16 @@ export default async function UserDashboard() {
         <MyCourseCard userId={parseInt(userId)} />
         {
           orderStatus?.isFree === false && (
-            <PDFCard />
+            <div className="relative z-10">
+              <PDFCard />
+            </div>
           )
         }
         {
           orderStatus?.isFree === false && (
-            <QuizResult userId={parseInt(userId)}/>
+            <div className="relative z-0">
+              <QuizResult userId={parseInt(userId)}/>
+            </div>
           )
         }
       </div>
