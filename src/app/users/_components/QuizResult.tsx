@@ -13,7 +13,7 @@ function QuizResult({ userId }: { userId: number }) {
         }
     }, [userId, fetchUserData]);
 
-    console.log("Quiz Results:", quizResults);
+    // console.log("Quiz Results:", quizResults);
 
     return (
         <div className="max-w-5xl mx-auto p-4">

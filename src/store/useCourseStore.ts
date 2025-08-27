@@ -41,7 +41,7 @@ const useCourseStore = create<courseStore>((set) => ({
   fetchCourses: async () => {
     set({ loading: true });
     try {
-      const response = await axios.get("/admin/api/get-course");
+      const response = await axios.get("/api/get-course");
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const courses: Course[] = response.data.map((course: any) => ({

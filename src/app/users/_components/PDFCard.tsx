@@ -16,6 +16,8 @@ function PDFCard() {
         fetchPdf();
     }, [fetchPdf]);
 
+    console.log("Fetched PDFs:", pdf);
+
     const handleView = (pdfUrl: string) => {
         setSelectedPdfUrl(pdfUrl); // Set the selected PDF URL
     };

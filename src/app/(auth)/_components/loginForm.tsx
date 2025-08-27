@@ -51,7 +51,7 @@ export default function LoginForm() {
     try {
       const response = await axios.post("/api/login-user", values);
       if (response.status === 200) {
-        const role = response.data.role;
+        const role = await response.data.role;
         if (role === "ADMIN") {
           router.push("/admin");
         } else {

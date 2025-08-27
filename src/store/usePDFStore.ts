@@ -63,14 +63,17 @@ const usePdfStore = create<PdfStore>((set) => ({
   fetchPdf: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.get("/admin/api/fetch-pdf");
+      const response = await axios.get("/api/fetch-pdf");
 
       if (!response.data) {
         set({ error: "Failed to fetch data", loading: false });
         return;
       }
 
-      const data: PDF[] = response.data;
+      const data: PDF[] = Array.isArray(response.data) ? response.data : response.data.pdfs || [];
+
+      console.log("Store:", data);
+
       set({ pdf: data, loading: false });
     } catch (error) {
       set({ error: (error as Error).message, loading: false });

@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    if (!bcrypt.compareSync(password, user.password)) {
+    const validatedPassword = await bcrypt.compare(password, user.password);
+
+    if (!validatedPassword) {
       return NextResponse.json({ error: "Invalid password" }, { status: 401 });
     }
 
@@ -35,7 +37,9 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    (await cookies()).set("token", token, {
+    const cookie_store = await cookies();
+
+    cookie_store.set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",

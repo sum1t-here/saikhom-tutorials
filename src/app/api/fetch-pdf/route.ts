@@ -8,7 +8,6 @@ export async function GET() {
         if(!pdfs) {
             return NextResponse.json({message : "No pdf found"}, {status: 400});
         }
-
         return NextResponse.json(pdfs, {status: 200});
     } catch (error) {
         if(error instanceof Error) return NextResponse.json({message : error.message}, {status: 400});

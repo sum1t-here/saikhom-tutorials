@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { pdfjs } from "react-pdf";
+// import { pdfjs } from "react-pdf";
 import { Document, Page } from "react-pdf";
 import { Button } from "@/components/ui/button"; // Import your Button component
 import "react-pdf/dist/esm/Page/TextLayer.css"; // Import TextLayer styles
 import "react-pdf/dist/esm/Page/AnnotationLayer.css"; // Import AnnotationLayer styles
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   "pdfjs-dist/build/pdf.worker.min.mjs",
+//   import.meta.url
+// ).toString();
 
 function PDFViewer({ url }: { url: string }) {
   const [numPages, setNumPages] = useState<number>();
